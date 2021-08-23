@@ -1,9 +1,30 @@
+import { API, graphqlOperation } from "aws-amplify";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { useEffect } from "react";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import ContactItem from "../components/ContactItem";
+import { listUsers } from "../src/graphql/queries";
 const ConTactsScreen = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const userData = await API.graphql(graphqlOperation(listUsers));
+        setUsers(userData.data.listUsers.items);
+      } catch (e) {}
+    };
+    fetchUser();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>contacts</Text>
+      <FlatList
+        data={users}
+        renderItem={({ item }) => <ContactItem user={item} />}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };
