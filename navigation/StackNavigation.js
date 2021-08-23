@@ -5,6 +5,7 @@ import TopTabsNavigation from "./TopTabsNavigation";
 import ChatScreen from "../screens/ChatScreen";
 import { View, Text, StyleSheet } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+import ConTactsScreen from "../screens/ConTactsScreen";
 
 Feather.loadFont();
 
@@ -40,6 +41,7 @@ const StackNavigation = () => {
             ),
           })}
         />
+        <Stack.Screen name="contactsScreen" component={ConTactsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

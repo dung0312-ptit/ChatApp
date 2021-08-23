@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View, Button, FlatList } from "react-native";
+import { Text, View, Button, FlatList, TouchableOpacity } from "react-native";
 import ChatListItem from "../components/ChatListItem";
 import ChatRooms from "../assets/data/ChatRooms";
-import AddNewMessageButton from "../assets/data/AddNewMessageButton";
+import AddNewMessageButton from "../components/AddNewMessageButton";
 
 function ChatListScreen({ navigation }) {
   return (
